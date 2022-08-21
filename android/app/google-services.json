@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "814578210785",
+    "project_id": "smart-home-7c806",
+    "storage_bucket": "smart-home-7c806.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814578210785:android:b4d2489b2d48262bfca4a0",
+        "android_client_info": {
+          "package_name": "com.stanislawszewerda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814578210785-9laoqri8flemnf2ti0setptl10qhuk2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDshwQNHv-AHyV1w6B0U3YU7TbARQIW-pM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814578210785-9laoqri8flemnf2ti0setptl10qhuk2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
