@@ -62,8 +62,8 @@ class WelcomePage extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(primary: Colors.black),
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const SecondPage()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => const LoginPage()));
               },
               child: Text(
                 'Rozpocznij',
@@ -82,20 +82,20 @@ class WelcomePage extends StatelessWidget {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class SecondPage extends StatefulWidget {
-  const SecondPage({
+class LoginPage extends StatefulWidget {
+  const LoginPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<SecondPage> createState() => _SecondPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 final emailcontroler = TextEditingController();
 
 final passwordcontroler = TextEditingController();
 
-class _SecondPageState extends State<SecondPage> {
+class _LoginPageState extends State<LoginPage> {
   FocusNode myFocusNode = FocusNode();
 
   @override
