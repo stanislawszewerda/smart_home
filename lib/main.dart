@@ -136,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                     const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 1),
             Container(
               padding: const EdgeInsets.all(10.0),
               margin: const EdgeInsets.all(20.0),
@@ -184,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                               color: Color.fromARGB(255, 255, 255, 255))),
                     ),
                     const SizedBox(
-                      height: 50,
+                      height: 1,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(primary: Colors.blue),
@@ -194,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         'Zaloguj',
                         style: GoogleFonts.lobster(
-                          fontSize: 30,
+                          fontSize: 20,
                           textStyle: const TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255)),
                         ),
@@ -205,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         'Zarejestruj się',
                         style: GoogleFonts.lobster(
-                          fontSize: 20,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold,
                           textStyle: const TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255)),
@@ -217,7 +217,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 1,
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(primary: Colors.blue),
@@ -227,7 +227,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Text(
                 'Ekran startowy',
                 style: GoogleFonts.lobster(
-                  fontSize: 30,
+                  fontSize: 10,
                   textStyle: const TextStyle(
                       color: Color.fromARGB(255, 255, 255, 255)),
                 ),
@@ -237,5 +237,20 @@ class _LoginPageState extends State<LoginPage> {
         )),
       ),
     );
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+// HomePage - Place where all customers should be after positive authentication
+
+class HomePage extends StatelessWidget {
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(body: null);
   }
 }
