@@ -1,4 +1,5 @@
 //import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:firebase_core/firebase_core.dart';
@@ -103,8 +104,16 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(primary: Colors.blue),
-                      onPressed: () {
-                        Navigator.of(context).pop();
+                      onPressed: () async {
+                        try {
+                          await FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                            email: emailcontroler.text,
+                            password: passwordcontroler.text,
+                          );
+                        } catch (error) {
+                          print(error);
+                        }
                       },
                       child: Text(
                         'Zaloguj',
