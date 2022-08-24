@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:smart_home/app/home/home_page.dart';
+import 'package:smart_home/app/login/login_page.dart';
 import 'package:smart_home/app/welcome/welcome_page.dart';
 import 'firebase_options.dart';
 
@@ -21,9 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-      ),
+      theme: ThemeData.dark(),
       home: const RootPage(),
     );
   }
@@ -43,9 +42,10 @@ class RootPage extends StatelessWidget {
         builder: (context, snapshot) {
           final user = snapshot.data;
           if (user == null) {
-            return const WelcomePage();
+            return LoginPage();
+          } else {
+            return const HomePage();
           }
-          return const HomePage();
         });
   }
 }

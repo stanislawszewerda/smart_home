@@ -1,6 +1,7 @@
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_home/app/home/home_page.dart';
 import 'package:smart_home/app/login/login_page.dart';
 //import 'package:smart_home/main.dart';
 //import 'package:firebase_core/firebase_core.dart';
@@ -47,11 +48,10 @@ class WelcomePage extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(primary: Colors.black),
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (_) => const LoginPage()));
+                Navigator.of(context).pop();
               },
               child: Text(
-                'Rozpocznij',
+                'HomePage',
                 style: GoogleFonts.lobster(
                     fontSize: 50,
                     textStyle: const TextStyle(
