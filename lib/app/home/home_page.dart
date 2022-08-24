@@ -7,30 +7,53 @@ import 'package:smart_home/app/welcome/welcome_page.dart';
 //import 'package:smart_home/app/welcome/welcome_page.dart';
 //import 'firebase_options.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var currentIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Center(
-            child: Column(
-              children: [
-                Text('Smart Home', style: GoogleFonts.lobster(fontSize: 30)),
-                Text('Just for you', style: GoogleFonts.lobster(fontSize: 10)),
-              ],
-            ),
+        title: Center(
+          child: Column(
+            children: [
+              Text('Smart Home', style: GoogleFonts.lobster(fontSize: 30)),
+              Text('Just for you', style: GoogleFonts.lobster(fontSize: 10)),
+            ],
           ),
-          leading: GestureDetector(
-            onTap: () {},
-            child: const Icon(Icons.menu),
-          )),
+        ),
+        leading: GestureDetector(
+          onTap: () {},
+          child: const Icon(Icons.menu),
+        ),
+      ),
+
+      ///
+      ///
+      ///
+      ///
+      ///Umieścić przyciski oraz tekst w dodanym container
+      ///
+      ///
+      ///
       body: Center(
         child: ListView(
           children: [
+            Container(
+              child: const Text('lolololo'),
+              color: Colors.amber,
+              padding: const EdgeInsets.all(20.0),
+              margin: const EdgeInsets.all(20.0),
+            ),
             const Text('HOMEPAGE'),
             ElevatedButton(
               style: ElevatedButton.styleFrom(primary: Colors.blue),
@@ -63,6 +86,18 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (newIndex) {
+          setState(() {
+            currentIndex = newIndex;
+          });
+        },
+        currentIndex: 0,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home Page'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'My Account')
+        ],
       ),
     );
   }
