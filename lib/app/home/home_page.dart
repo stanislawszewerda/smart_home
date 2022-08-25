@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
                   'Jesteś zalogowany jako:',
                   style: GoogleFonts.lobster(fontSize: 20),
                 ),
+                const SizedBox(height: 50),
                 Text(
                   '${widget.user.email}',
                   style: GoogleFonts.lobster(fontSize: 20),
@@ -62,7 +63,8 @@ class _HomePageState extends State<HomePage> {
                   height: 100,
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.blue),
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color.fromARGB(70, 35, 241, 104)),
                   onPressed: () {
                     FirebaseAuth.instance.signOut();
                   },
@@ -76,10 +78,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.blue),
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color.fromARGB(70, 35, 241, 104)),
                   onPressed: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (_) => const WelcomePage()));
@@ -97,26 +100,33 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         }
+
+        ///
+        ///
+        ///
+        ///
+        ///
         return Center(
           child: ListView(
             children: [
               Container(
-                color: Colors.amber,
+                color: const Color.fromARGB(69, 35, 241, 104),
                 padding: const EdgeInsets.all(20.0),
                 margin: const EdgeInsets.all(20.0),
-                child: const Text('lolololo'),
+                child: const Text(
+                    'Ten Container ma zawiercać urządzenie IoT oraz stan jego załączenia'),
               ),
             ],
           ),
         );
       }),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
         onTap: (newIndex) {
           setState(() {
             currentIndex = newIndex;
           });
         },
-        currentIndex: 0,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.device_hub), label: 'IoT Devices'),

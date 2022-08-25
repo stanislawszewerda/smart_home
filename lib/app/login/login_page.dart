@@ -66,8 +66,8 @@ class _LoginPageState extends State<LoginPage> {
         decoration: const BoxDecoration(
           image: DecorationImage(
               // AssetImage - jest funkcjonalnością którą jakoś trzeba implementować w Pubspcec.Yaml!!!
-              // Fit: BoxFit.Cover umożliwia dodanie zdjęcia
-              image: AssetImage('images/window.jpg'),
+              // Fit: BoxFit.Cover umożliwia dociagniecie zdjecia do krawedzi ekranu
+              image: AssetImage('images/zorza.jpg'),
               fit: BoxFit.cover),
         ),
         child: Center(
@@ -165,7 +165,8 @@ class _LoginPageState extends State<LoginPage> {
                     ///
                     ///
                     ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Colors.blue),
+                      style: ElevatedButton.styleFrom(
+                          primary: const Color.fromARGB(70, 35, 241, 104)),
                       onPressed: () async {
                         if (isCreatingAccount == true) {
                           // REJESTRACJA
