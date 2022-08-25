@@ -30,11 +30,21 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        leading: GestureDetector(
-          onTap: () {},
-          child: const Icon(Icons.menu),
-        ),
       ),
+      drawer: Drawer(
+          child: ListView(
+        children: [
+          ListTile(
+            title: const Icon(Icons.menu),
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          const Text('Element1'),
+          const Text('Element2'),
+          const Text('Element3'),
+        ],
+      )),
 
       ///
       ///

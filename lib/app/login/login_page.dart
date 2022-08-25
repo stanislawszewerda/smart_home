@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'Smart Home',
               style: GoogleFonts.lobster(
-                fontSize: 50,
+                fontSize: 40,
                 fontWeight: FontWeight.bold,
                 textStyle:
                     const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'Just for You',
               style: GoogleFonts.lobster(
-                fontSize: 30,
+                fontSize: 20,
                 textStyle:
                     const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
               ),
@@ -109,6 +109,15 @@ class _LoginPageState extends State<LoginPage> {
                     ///
                     ///
                     ///
+
+                    Text(
+                      isCreatingAccount == true ? 'Rejestracja' : 'Logowanie',
+                      style: GoogleFonts.lobster(fontSize: 20),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+
                     ///
                     ///
                     TextFormField(
@@ -124,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       controller: widget.emailcontroler,
                       style: GoogleFonts.lobster(
-                          fontSize: 20,
+                          fontSize: 15,
                           textStyle: const TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255))),
                     ),
@@ -138,6 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                     ///
                     ///
                     TextFormField(
+                      obscureText: true,
                       focusNode: myFocusNode,
                       decoration: InputDecoration(
                         fillColor: const Color.fromARGB(255, 255, 255, 255),
@@ -151,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       controller: widget.passwordcontroler,
                       style: GoogleFonts.lobster(
-                          fontSize: 20,
+                          fontSize: 15,
                           textStyle: const TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255))),
                     ),
@@ -203,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                             ? 'Zarejestruj się'
                             : 'Zaloguj się',
                         style: GoogleFonts.lobster(
-                          fontSize: 20,
+                          fontSize: 15,
                           textStyle: const TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255)),
                         ),
@@ -259,7 +269,7 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       errorMessage,
                       style: GoogleFonts.lobster(
-                        fontSize: 18,
+                        fontSize: 10,
                         textStyle: const TextStyle(
                             color: Color.fromARGB(255, 255, 255, 255)),
                       ),
