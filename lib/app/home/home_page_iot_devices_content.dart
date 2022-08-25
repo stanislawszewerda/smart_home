@@ -24,6 +24,11 @@ class IotDevices extends StatelessWidget {
               ],
             ),
           ),
+          FloatingActionButton(
+              onPressed: () {
+                // Ten przycisk chwilowo będzie odpowiedzialny za dodawanie kolejnych containerow IoT
+              },
+              child: const Icon(Icons.add)),
         ],
       ),
     );
