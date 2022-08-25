@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_home/app/welcome/welcome_page.dart';
+import 'package:smart_home/app/home/home_page_iot_devices_content.dart';
+import 'package:smart_home/app/home/home_page_my_account_page_content.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -31,6 +32,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      // Drawer najprawdopodobniej nada się do wyekstraktowania jako osobny widget bo zajmie dużo miejsca
       drawer: Drawer(
           child: ListView(
         children: [
@@ -40,96 +42,23 @@ class _HomePageState extends State<HomePage> {
               Navigator.of(context).pop();
             },
           ),
-          const Text('Element1'),
+          const Text('Add new IoT Device'),
           const Text('Element2'),
           const Text('Element3'),
         ],
       )),
 
       ///
-      ///
-      ///
-      ///
-      ///Umieścić przyciski oraz tekst w dodanym container
-      ///
-      ///
-      ///
-      body: Builder(builder: (context) {
-        if (currentIndex == 1) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Jesteś zalogowany jako:',
-                  style: GoogleFonts.lobster(fontSize: 20),
-                ),
-                const SizedBox(height: 50),
-                Text(
-                  '${widget.user.email}',
-                  style: GoogleFonts.lobster(fontSize: 20),
-                ),
-                const SizedBox(
-                  height: 100,
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      primary: const Color.fromARGB(70, 35, 241, 104)),
-                  onPressed: () {
-                    FirebaseAuth.instance.signOut();
-                  },
-                  child: Text(
-                    'Wyloguj się',
-                    style: GoogleFonts.lobster(
-                      fontSize: 20,
-                      textStyle: const TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      primary: const Color.fromARGB(70, 35, 241, 104)),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => const WelcomePage()));
-                  },
-                  child: Text(
-                    'Zobacz ekran powitalny',
-                    style: GoogleFonts.lobster(
-                      fontSize: 20,
-                      textStyle: const TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        }
+      body: Builder(
+        builder: (context) {
+          if (currentIndex == 1) {
+            return MyAccount(widget: widget);
+          }
 
-        ///
-        ///
-        ///
-        ///
-        ///
-        return Center(
-          child: ListView(
-            children: [
-              Container(
-                color: const Color.fromARGB(69, 35, 241, 104),
-                padding: const EdgeInsets.all(20.0),
-                margin: const EdgeInsets.all(20.0),
-                child: const Text(
-                    'Ten Container ma zawiercać urządzenie IoT oraz stan jego załączenia'),
-              ),
-            ],
-          ),
-        );
-      }),
+          ///
+          return const IotDevices();
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (newIndex) {
