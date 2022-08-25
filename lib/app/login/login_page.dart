@@ -1,10 +1,6 @@
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import 'package:firebase_core/firebase_core.dart';
-//import 'package:smart_home/app/welcome/welcome_page.dart';
-//import 'firebase_options.dart';
 
 //Login: stachuf16@gmail.com
 //Hasło: stachu14d
@@ -185,7 +181,6 @@ class _LoginPageState extends State<LoginPage> {
                             });
                             print(error);
                           }
-                          ;
                         } else {
                           // LOGOWANIE
                           try {
@@ -200,7 +195,6 @@ class _LoginPageState extends State<LoginPage> {
                             });
                             print(error);
                           }
-                          ;
                         }
                       },
                       child: Text(
@@ -272,9 +266,6 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 1,
             ),
 
             ///

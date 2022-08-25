@@ -1,11 +1,5 @@
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_home/app/home/home_page.dart';
-import 'package:smart_home/app/login/login_page.dart';
-//import 'package:smart_home/main.dart';
-//import 'package:firebase_core/firebase_core.dart';
-//import 'firebase_options.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({
@@ -51,7 +45,7 @@ class WelcomePage extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               child: Text(
-                'HomePage',
+                'Powrót',
                 style: GoogleFonts.lobster(
                     fontSize: 50,
                     textStyle: const TextStyle(

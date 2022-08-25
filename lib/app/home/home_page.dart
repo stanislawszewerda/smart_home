@@ -1,16 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_home/app/welcome/welcome_page.dart';
-//import 'package:firebase_core/firebase_core.dart';
-//import 'package:smart_home/app/welcome/welcome_page.dart';
-//import 'firebase_options.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
+    required this.user,
   }) : super(key: key);
+
+  final User user;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -45,48 +44,72 @@ class _HomePageState extends State<HomePage> {
       ///
       ///
       ///
-      body: Center(
-        child: ListView(
-          children: [
-            Container(
-              child: const Text('lolololo'),
-              color: Colors.amber,
-              padding: const EdgeInsets.all(20.0),
-              margin: const EdgeInsets.all(20.0),
-            ),
-            const Text('HOMEPAGE'),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: Colors.blue),
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              child: Text(
-                'Wyloguj się',
-                style: GoogleFonts.lobster(
-                  fontSize: 10,
-                  textStyle: const TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255)),
+      body: Builder(builder: (context) {
+        if (currentIndex == 1) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Jesteś zalogowany jako:',
+                  style: GoogleFonts.lobster(fontSize: 20),
                 ),
-              ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: Colors.blue),
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const WelcomePage()));
-              },
-              child: Text(
-                'Zobacz ekran powitalny',
-                style: GoogleFonts.lobster(
-                  fontSize: 10,
-                  textStyle: const TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255)),
+                Text(
+                  '${widget.user.email}',
+                  style: GoogleFonts.lobster(fontSize: 20),
                 ),
-              ),
+                const SizedBox(
+                  height: 100,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.blue),
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                  },
+                  child: Text(
+                    'Wyloguj się',
+                    style: GoogleFonts.lobster(
+                      fontSize: 20,
+                      textStyle: const TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.blue),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const WelcomePage()));
+                  },
+                  child: Text(
+                    'Zobacz ekran powitalny',
+                    style: GoogleFonts.lobster(
+                      fontSize: 20,
+                      textStyle: const TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          );
+        }
+        return Center(
+          child: ListView(
+            children: [
+              Container(
+                color: Colors.amber,
+                padding: const EdgeInsets.all(20.0),
+                margin: const EdgeInsets.all(20.0),
+                child: const Text('lolololo'),
+              ),
+            ],
+          ),
+        );
+      }),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (newIndex) {
           setState(() {
@@ -95,7 +118,8 @@ class _HomePageState extends State<HomePage> {
         },
         currentIndex: 0,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home Page'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.device_hub), label: 'IoT Devices'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'My Account')
         ],
       ),
