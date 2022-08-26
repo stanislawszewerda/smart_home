@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_home/app/home/home_page.dart';
 
-class AddIotDevice extends StatefulWidget {
-  const AddIotDevice({
+class AddIotDevicePage extends StatefulWidget {
+  const AddIotDevicePage({
     Key? key,
     required this.user,
   }) : super(key: key);
@@ -12,10 +12,10 @@ class AddIotDevice extends StatefulWidget {
   final User user;
 
   @override
-  State<AddIotDevice> createState() => _AddIotDeviceState();
+  State<AddIotDevicePage> createState() => _AddIotDevicePageState();
 }
 
-class _AddIotDeviceState extends State<AddIotDevice> {
+class _AddIotDevicePageState extends State<AddIotDevicePage> {
   var currentIndex = 0;
 
   @override
@@ -31,6 +31,8 @@ class _AddIotDeviceState extends State<AddIotDevice> {
         ),
       ),
       // Drawer najprawdopodobniej nada się do wyekstraktowania jako osobny widget bo zajmie dużo miejsca
+      /// Drawer dodany na tej stronie trzeba koniecznie usunąć i dodać widget utworzony z drawera
+      /// zrobionego w home page
       drawer: Drawer(
         child: ListView(
           children: [
