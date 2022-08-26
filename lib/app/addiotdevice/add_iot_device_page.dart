@@ -1,14 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_home/app/addcctvwebcam/add_cctv_webcam_page.dart';
-import 'package:smart_home/app/addiotdevice/add_iot_device_page.dart';
-import 'package:smart_home/app/home/home_page_cctv_content.dart';
-import 'package:smart_home/app/home/home_page_iot_devices_content.dart';
-import 'package:smart_home/app/home/home_page_my_account_page_content.dart';
+import 'package:smart_home/app/home/home_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({
+class AddIotDevice extends StatefulWidget {
+  const AddIotDevice({
     Key? key,
     required this.user,
   }) : super(key: key);
@@ -16,10 +12,10 @@ class HomePage extends StatefulWidget {
   final User user;
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AddIotDevice> createState() => _AddIotDeviceState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AddIotDeviceState extends State<AddIotDevice> {
   var currentIndex = 0;
 
   @override
@@ -34,10 +30,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      // Drawer najprawdopodobniej nada się do wyekstraktowania jako osobny widget bo zajmie dużo miejsca!!!!!!
-      /// Pomysły do zrobienia:
-      /// Trzeba sprobować dodać Drawer jako osoby widget który będzie można wstawić na dowolnej stronie!!!
-      /// Rozwijane menu Home? Po rozwinieciu przechodzimy do home a następnie z rozsuniętego home wybieramy to samo co z appbara?
+      // Drawer najprawdopodobniej nada się do wyekstraktowania jako osobny widget bo zajmie dużo miejsca
       drawer: Drawer(
         child: ListView(
           children: [
@@ -52,8 +45,6 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               onTap: () {
                 Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => AddIotDevice(user: widget.user)));
               },
               leading: const Icon(Icons.add),
               hoverColor: Colors.grey,
@@ -61,9 +52,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               onTap: () {
-                /// THERE IS SOME PROBLEM WITH GOING TO THE PAGE ADD CCTV
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (_) => const AddCctv()));
+                // here is a place to create another screan for adding CCTV webcams
               },
               leading: const Icon(Icons.add),
               hoverColor: Colors.grey,
@@ -99,35 +88,13 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-
-      ///
-      body: Builder(
-        builder: (context) {
-          if (currentIndex == 2) {
-            return MyAccount(user: widget.user);
-          }
-          if (currentIndex == 1) {
-            return const Cctv();
-          }
-
-          return const IotDevices();
-        },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (newIndex) {
-          setState(() {
-            currentIndex = newIndex;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.device_hub), label: 'IoT Devices'),
-          BottomNavigationBarItem(icon: Icon(Icons.videocam), label: 'CCTV'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: 'My Account'),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Text('This screen will allow you to add new IoT Device')
         ],
-      ),
+      )),
     );
   }
 }

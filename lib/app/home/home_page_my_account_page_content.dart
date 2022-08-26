@@ -1,16 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_home/app/home/home_page.dart';
 import 'package:smart_home/app/welcome/welcome_page.dart';
 
 class MyAccount extends StatelessWidget {
   const MyAccount({
     Key? key,
-    required this.widget,
+    required this.user,
   }) : super(key: key);
 
-  final HomePage widget;
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class MyAccount extends StatelessWidget {
           ),
           const SizedBox(height: 50),
           Text(
-            '${widget.user.email}',
+            '${user.email}',
             style: GoogleFonts.lobster(fontSize: 20),
           ),
           const SizedBox(
