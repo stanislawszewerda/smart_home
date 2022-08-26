@@ -37,14 +37,52 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
         children: [
           ListTile(
-            title: const Icon(Icons.menu),
+            tileColor: const Color.fromARGB(90, 70, 247, 76),
+            leading: const Icon(Icons.menu),
+            title: const Text('Menu'),
             onTap: () {
               Navigator.of(context).pop();
             },
           ),
-          const Text('Add new IoT Device'),
-          const Text('Element2'),
-          const Text('Element3'),
+          const Divider(),
+          ListTile(
+            onTap: () {},
+            leading: const Icon(Icons.add),
+            hoverColor: Colors.grey,
+            title: const Text("Add IoT Device"),
+          ),
+          const Divider(),
+          ListTile(
+            onTap: () {},
+            leading: const Icon(Icons.device_hub),
+            hoverColor: Colors.grey,
+            title: const Text("IoT Devices"),
+          ),
+          ListTile(
+            onTap: () {},
+            leading: const Icon(Icons.videocam),
+            hoverColor: Colors.grey,
+            title: const Text("CCTV"),
+          ),
+          ListTile(
+            onTap: () {},
+            leading: const Icon(Icons.person),
+            hoverColor: Colors.grey,
+            title: const Text("MyAccount"),
+          ),
+          const Divider(),
+          ListTile(
+            onTap: () {},
+            leading: const Icon(Icons.settings),
+            hoverColor: Colors.grey,
+            title: const Text("Settings"),
+          ),
+          ListTile(
+            onTap: () {},
+            leading: const Icon(Icons.shop),
+            hoverColor: Colors.grey,
+            title: const Text("Buy our devices"),
+          ),
         ],
       )),
 
@@ -55,7 +93,7 @@ class _HomePageState extends State<HomePage> {
             return MyAccount(widget: widget);
           }
 
-          ///
+          //if (cu)
           return const IotDevices();
         },
       ),
