@@ -23,13 +23,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Column(
-            children: [
-              Text('Smart Home', style: GoogleFonts.lobster(fontSize: 30)),
-              Text('Just for you', style: GoogleFonts.lobster(fontSize: 10)),
-            ],
-          ),
+        centerTitle: true,
+        title: Column(
+          children: [
+            Text('Smart Home', style: GoogleFonts.lobster(fontSize: 30)),
+            Text('Just for you', style: GoogleFonts.lobster(fontSize: 10)),
+          ],
         ),
       ),
       // Drawer najprawdopodobniej nada się do wyekstraktowania jako osobny widget bo zajmie dużo miejsca
