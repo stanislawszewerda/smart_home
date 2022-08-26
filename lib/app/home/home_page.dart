@@ -6,6 +6,8 @@ import 'package:smart_home/app/addiotdevice/add_iot_device_page.dart';
 import 'package:smart_home/app/home/home_page_cctv_content.dart';
 import 'package:smart_home/app/home/home_page_iot_devices_content.dart';
 import 'package:smart_home/app/home/home_page_my_account_page_content.dart';
+import 'package:smart_home/app/settings/settings_page.dart';
+import 'package:smart_home/app/shop/shop_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -53,7 +55,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => AddIotDevice(user: widget.user)));
+                    builder: (_) => AddIotDevicePage(user: widget.user)));
               },
               leading: const Icon(Icons.add),
               hoverColor: Colors.grey,
@@ -61,9 +63,9 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               onTap: () {
-                /// THERE IS SOME PROBLEM WITH GOING TO THE PAGE ADD CCTV
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (_) => const AddCctv()));
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => const AddCctvWebcamPage()));
               },
               leading: const Icon(Icons.add),
               hoverColor: Colors.grey,
@@ -74,9 +76,10 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 setState(() {
                   Navigator.of(context).pop();
-
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => HomePage(user: widget.user)));
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (context) => HomePage(user: widget.user)),
+                      (Route<dynamic> route) => false);
                 });
               },
               leading: const Icon(Icons.home),
@@ -85,13 +88,24 @@ class _HomePageState extends State<HomePage> {
             ),
             const Divider(),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                        builder: (context) => const SettingsPage()),
+                    (Route<dynamic> route) => false);
+              },
               leading: const Icon(Icons.settings),
               hoverColor: Colors.grey,
               title: const Text("Settings"),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => const ShopPage()),
+                    (Route<dynamic> route) => false);
+              },
               leading: const Icon(Icons.shop),
               hoverColor: Colors.grey,
               title: const Text("Buy our devices"),
