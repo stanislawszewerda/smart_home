@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_home/app/home/home_page_cctv_content.dart';
 import 'package:smart_home/app/home/home_page_iot_devices_content.dart';
 import 'package:smart_home/app/home/home_page_my_account_page_content.dart';
 
@@ -43,7 +44,6 @@ class _HomePageState extends State<HomePage> {
               Navigator.of(context).pop();
             },
           ),
-          const Divider(),
           ListTile(
             onTap: () {},
             leading: const Icon(Icons.add),
@@ -88,11 +88,13 @@ class _HomePageState extends State<HomePage> {
       ///
       body: Builder(
         builder: (context) {
-          if (currentIndex == 1) {
+          if (currentIndex == 2) {
             return MyAccount(widget: widget);
           }
+          if (currentIndex == 1) {
+            return const Cctv();
+          }
 
-          //if (cu)
           return const IotDevices();
         },
       ),
@@ -106,7 +108,9 @@ class _HomePageState extends State<HomePage> {
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.device_hub), label: 'IoT Devices'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'My Account')
+          BottomNavigationBarItem(icon: Icon(Icons.videocam), label: 'CCTV'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person), label: 'My Account'),
         ],
       ),
     );
