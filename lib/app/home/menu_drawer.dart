@@ -40,6 +40,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
           ListTile(
             onTap: () {
               Navigator.of(context).pop();
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (context) => HomePage(user: widget.user)),
+                  (Route<dynamic> route) => false);
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) => AddIotDevicePage(user: widget.user)));
             },
@@ -53,6 +57,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
               /// Następnie otwiera się ekran HomePage
               /// Użycie przycisku cofnij nie wyrzuca użytkownika z aplkikacji tylko zawsze wrzuca spowrotem na strone HomePage
               /// Rozwiazany problem nadmiernego nakładania się
+              Navigator.of(context).pop();
               Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(
                       builder: (context) => HomePage(user: widget.user)),
@@ -83,10 +88,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
               Navigator.of(context).pop();
               Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(
-                      builder: (context) => SettingsPage(
-                            user: widget.user,
-                          )),
+                      builder: (context) => HomePage(user: widget.user)),
                   (Route<dynamic> route) => false);
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => SettingsPage(user: widget.user)));
             },
             leading: const Icon(Icons.settings),
             hoverColor: Colors.grey,
@@ -97,8 +102,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
               Navigator.of(context).pop();
               Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(
-                      builder: (context) => ShopPage(user: widget.user)),
+                      builder: (context) => HomePage(user: widget.user)),
                   (Route<dynamic> route) => false);
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => ShopPage(user: widget.user)));
             },
             leading: const Icon(Icons.shop),
             hoverColor: Colors.grey,
