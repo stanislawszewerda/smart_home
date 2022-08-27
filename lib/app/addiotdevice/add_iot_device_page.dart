@@ -42,12 +42,30 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
               padding: const EdgeInsets.all(20.0),
               margin: const EdgeInsets.all(20.0),
               child: Column(
-                children: const [
-                  Text('Set type of your IoT Device'),
-                  SizedBox(
+                children: [
+                  const Text('Set type of your IoT Device'),
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text('Tutaj rozwijana lista z typami urządzenia'),
+                  const Text('Tutaj rozwijana lista z typami urządzenia'),
+
+                  ///
+                  ///
+                  ///
+                  DropdownButton<String>(
+                    items: <String>['a', 'b', 'c', 'd'].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: const Text('Type of device'),
+                      );
+                    }).toList(),
+                    onChanged: (_) {},
+                  )
+
+                  ///
+                  ///
+                  ///
+                  ///
                 ],
               ),
             ),
@@ -62,6 +80,28 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
                     height: 20,
                   ),
                   Text('Tutaj rozwijana lista z dostępnymi numerami'),
+                ],
+              ),
+            ),
+            Container(
+              color: const Color.fromARGB(69, 35, 241, 104),
+              padding: const EdgeInsets.all(20.0),
+              margin: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  const Text('Name your device'),
+                  const Text('(for example: light in the kitchen)'),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      fillColor: Color.fromARGB(255, 255, 255, 255),
+                      focusColor: Color.fromARGB(255, 255, 255, 255),
+                      border: OutlineInputBorder(),
+                      label: Center(child: Text('Name of device')),
+                    ),
+                  ),
                 ],
               ),
             ),
