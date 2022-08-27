@@ -35,10 +35,50 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
       /// zrobionego w home page
       drawer: MenuDrawer(user: widget.user),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text('This screen will allow you to add new IoT Device')
+        child: ListView(
+          children: [
+            Container(
+              color: const Color.fromARGB(69, 35, 241, 104),
+              padding: const EdgeInsets.all(20.0),
+              margin: const EdgeInsets.all(20.0),
+              child: Column(
+                children: const [
+                  Text('Set type of your IoT Device'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text('Tutaj rozwijana lista z typami urządzenia'),
+                ],
+              ),
+            ),
+            Container(
+              color: const Color.fromARGB(69, 35, 241, 104),
+              padding: const EdgeInsets.all(20.0),
+              margin: const EdgeInsets.all(20.0),
+              child: Column(
+                children: const [
+                  Text('Set number of the port on Master Device'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text('Tutaj rozwijana lista z dostępnymi numerami'),
+                ],
+              ),
+            ),
+            Container(
+              color: const Color.fromARGB(69, 35, 241, 104),
+              padding: const EdgeInsets.all(20.0),
+              margin: const EdgeInsets.all(20.0),
+              child: Column(
+                children: const [
+                  Text('Control your device:'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text('By my own / By the rules'),
+                ],
+              ),
+            ),
           ],
         ),
       ),
