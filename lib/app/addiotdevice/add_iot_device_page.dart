@@ -119,6 +119,20 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              color: const Color.fromARGB(0, 35, 241, 104),
+              padding: const EdgeInsets.all(20.0),
+              margin: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  ElevatedButton(
+                      onPressed: () {}, child: const Text('Add Device')),
+                ],
+              ),
+            ),
           ],
         ),
       ),

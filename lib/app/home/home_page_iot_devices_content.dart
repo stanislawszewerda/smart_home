@@ -1,35 +1,46 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class IotDevices extends StatelessWidget {
+class IotDevices extends StatefulWidget {
   const IotDevices({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<IotDevices> createState() => _IotDevicesState();
+}
+
+class _IotDevicesState extends State<IotDevices> {
+  @override
   Widget build(BuildContext context) {
     return Center(
-      child: ListView(
-        children: [
-          Container(
-            color: const Color.fromARGB(69, 35, 241, 104),
-            padding: const EdgeInsets.all(20.0),
-            margin: const EdgeInsets.all(20.0),
-            child: Row(
-              children: const [
-                Text('Urzadzenie IoT'),
-                SizedBox(
-                  width: 80,
-                ),
-                Text('Ikona stanu'),
+      child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('devices').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Text('something went wrong');
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Text('Loading');
+          }
+
+          final documents = snapshot.data!.docs;
+
+          return Column(
+            children: [
+              for (final document in documents) ...[
+                Text(document['name']),
+                Text(document['portnumber'].toString()),
+                Text(document['rules'].toString()),
+                Text(document['type']),
+                Text(document['value'].toString()),
               ],
-            ),
-          ),
-          FloatingActionButton(
-              onPressed: () {
-                // Ten przycisk chwilowo będzie odpowiedzialny za dodawanie kolejnych containerow IoT
-              },
-              child: const Icon(Icons.add)),
-        ],
+              const Center(
+                child: Text('Ten ekran wyswietla urzadzenia IoT'),
+              )
+            ],
+          );
+        },
       ),
     );
   }
