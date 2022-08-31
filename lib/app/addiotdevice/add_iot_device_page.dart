@@ -18,7 +18,7 @@ class AddIotDevicePage extends StatefulWidget {
 }
 
 class _AddIotDevicePageState extends State<AddIotDevicePage> {
-  var portNumber = 0;
+  var portNumber = 1;
   var iotDeviceName = '';
 
   @override
@@ -44,8 +44,9 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
               child: Column(
                 children: [
                   NumberPicker(
+                    axis: Axis.horizontal,
                     value: portNumber,
-                    minValue: 0,
+                    minValue: 1,
                     maxValue: 10,
                     onChanged: (value) => setState(() => portNumber = value),
                   ),

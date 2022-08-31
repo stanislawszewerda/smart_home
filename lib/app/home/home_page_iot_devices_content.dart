@@ -15,7 +15,10 @@ class _IotDevicesState extends State<IotDevices> {
   Widget build(BuildContext context) {
     return Center(
       child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-        stream: FirebaseFirestore.instance.collection('devices').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('devices')
+            .orderBy('portnumber')
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Text('something went wrong');
