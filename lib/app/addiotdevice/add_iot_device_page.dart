@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_home/app/home/menu_drawer.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 class AddIotDevicePage extends StatefulWidget {
   const AddIotDevicePage({
@@ -16,7 +18,8 @@ class AddIotDevicePage extends StatefulWidget {
 }
 
 class _AddIotDevicePageState extends State<AddIotDevicePage> {
-  var currentIndex = 0;
+  var portNumber = 0;
+  var iotDeviceName = '';
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +33,6 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
           ],
         ),
       ),
-      // Drawer najprawdopodobniej nada się do wyekstraktowania jako osobny widget bo zajmie dużo miejsca
-      /// Drawer dodany na tej stronie trzeba koniecznie usunąć i dodać widget utworzony z drawera
-      /// zrobionego w home page
       drawer: MenuDrawer(user: widget.user),
       body: Center(
         child: ListView(
@@ -43,43 +43,16 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
               margin: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
-                  const Text('Set type of your IoT Device'),
+                  NumberPicker(
+                    value: portNumber,
+                    minValue: 0,
+                    maxValue: 10,
+                    onChanged: (value) => setState(() => portNumber = value),
+                  ),
+                  const Text('Set number of the port on Master Device'),
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text('Tutaj rozwijana lista z typami urządzenia'),
-
-                  ///
-                  ///
-                  ///
-                  DropdownButton<String>(
-                    items: <String>['a', 'b', 'c', 'd'].map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: const Text('Type of device'),
-                      );
-                    }).toList(),
-                    onChanged: (_) {},
-                  )
-
-                  ///
-                  ///
-                  ///
-                  ///
-                ],
-              ),
-            ),
-            Container(
-              color: const Color.fromARGB(69, 35, 241, 104),
-              padding: const EdgeInsets.all(20.0),
-              margin: const EdgeInsets.all(20.0),
-              child: Column(
-                children: const [
-                  Text('Set number of the port on Master Device'),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text('Tutaj rozwijana lista z dostępnymi numerami'),
                 ],
               ),
             ),
@@ -101,21 +74,10 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
                       border: OutlineInputBorder(),
                       label: Center(child: Text('Name of device')),
                     ),
+                    onChanged: ((newValue) {
+                      iotDeviceName = newValue;
+                    }),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              color: const Color.fromARGB(69, 35, 241, 104),
-              padding: const EdgeInsets.all(20.0),
-              margin: const EdgeInsets.all(20.0),
-              child: Column(
-                children: const [
-                  Text('Control your device:'),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text('By my own / By the rules'),
                 ],
               ),
             ),
@@ -129,7 +91,13 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
               child: Column(
                 children: [
                   ElevatedButton(
-                      onPressed: () {}, child: const Text('Add Device')),
+                      onPressed: () {
+                        FirebaseFirestore.instance.collection('devices').add({
+                          'name': iotDeviceName,
+                          'portnumber': portNumber,
+                        });
+                      },
+                      child: const Text('Add Device')),
                 ],
               ),
             ),
