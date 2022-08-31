@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_home/app/home/home_page.dart';
 import 'package:smart_home/app/home/menu_drawer.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -92,12 +93,22 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
               child: Column(
                 children: [
                   ElevatedButton(
-                      onPressed: () {
-                        FirebaseFirestore.instance.collection('devices').add({
-                          'name': iotDeviceName,
-                          'portnumber': portNumber,
-                        });
-                      },
+                      onPressed: iotDeviceName.isEmpty
+                          ? null
+                          : () {
+                              FirebaseFirestore.instance
+                                  .collection('devices')
+                                  .add({
+                                'portnumber': portNumber,
+                                'name': iotDeviceName,
+                              });
+                              Navigator.of(context).pop();
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          HomePage(user: widget.user)),
+                                  (Route<dynamic> route) => false);
+                            },
                       child: const Text('Add Device')),
                 ],
               ),
