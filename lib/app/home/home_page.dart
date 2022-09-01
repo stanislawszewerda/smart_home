@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:smart_home/app/home/home_page_cctv_content.dart';
-import 'package:smart_home/app/home/home_page_iot_devices_content.dart';
-import 'package:smart_home/app/home/home_page_my_account_page_content.dart';
-import 'package:smart_home/app/home/menu_drawer.dart';
+import 'package:smart_home/app/home/cctv_webcams/home_page_cctv_content.dart';
+import 'package:smart_home/app/home/iot_devices/home_page_iot_devices_content.dart';
+import 'package:smart_home/app/home/my_account/home_page_my_account_page_content.dart';
+import 'package:smart_home/app/home/menu_drawer/menu_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
