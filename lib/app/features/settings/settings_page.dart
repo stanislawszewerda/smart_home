@@ -1,18 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_home/app/home/menu_drawer/menu_drawer.dart';
+import 'package:smart_home/app/features/home/menu_drawer/menu_drawer.dart';
 
-class ShopPage extends StatefulWidget {
-  const ShopPage({Key? key, required this.user}) : super(key: key);
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   final User user;
 
   @override
-  State<ShopPage> createState() => _ShopPageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _ShopPageState extends State<ShopPage> {
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +35,7 @@ class _ShopPageState extends State<ShopPage> {
         drawer: MenuDrawer(user: widget.user),
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('Here is a place to buy Our prodcts in the future',
+            Text('SETTINGS FOR YOUR APP',
                 style: GoogleFonts.lobster(
                     textStyle: const TextStyle(color: Colors.amber)))
           ]),

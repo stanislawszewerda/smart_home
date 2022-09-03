@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_home/app/welcome/welcome_page.dart';
+import 'package:smart_home/app/features/welcome/welcome_page.dart';
 
 class MyAccount extends StatelessWidget {
   const MyAccount({

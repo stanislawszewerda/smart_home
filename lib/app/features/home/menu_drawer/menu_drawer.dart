@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_home/app/addcctvwebcam/add_cctv_webcam_page.dart';
-import 'package:smart_home/app/addiotdevice/add_iot_device_page.dart';
-import 'package:smart_home/app/home/home_page.dart';
-import 'package:smart_home/app/settings/settings_page.dart';
-import 'package:smart_home/app/shop/shop_page.dart';
+import 'package:smart_home/app/features/addcctvwebcam/add_cctv_webcam_page.dart';
+import 'package:smart_home/app/features/addiotdevice/add_iot_device_page.dart';
+import 'package:smart_home/app/features/home/home_page.dart';
+import 'package:smart_home/app/features/settings/settings_page.dart';
+import 'package:smart_home/app/features/shop/shop_page.dart';
 
 // Drawer najprawdopodobniej nada się do wyekstraktowania jako osobny widget bo zajmie dużo miejsca!!!!!!
 /// Pomysły do zrobienia:

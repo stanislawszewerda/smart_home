@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_home/app/home/menu_drawer/menu_drawer.dart';
+import 'package:smart_home/app/features/home/menu_drawer/menu_drawer.dart';
 
-class SettingsPage extends StatefulWidget {
-  const SettingsPage({
+class AddCctvWebcamPage extends StatefulWidget {
+  const AddCctvWebcamPage({
     Key? key,
     required this.user,
   }) : super(key: key);
@@ -12,10 +12,10 @@ class SettingsPage extends StatefulWidget {
   final User user;
 
   @override
-  State<SettingsPage> createState() => _SettingsPageState();
+  State<AddCctvWebcamPage> createState() => _AddCctvWebcamPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _AddCctvWebcamPageState extends State<AddCctvWebcamPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +35,7 @@ class _SettingsPageState extends State<SettingsPage> {
         drawer: MenuDrawer(user: widget.user),
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('SETTINGS FOR YOUR APP',
+            Text('Screan for adding CCTV webcam',
                 style: GoogleFonts.lobster(
                     textStyle: const TextStyle(color: Colors.amber)))
           ]),

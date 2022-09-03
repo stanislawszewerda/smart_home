@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_home/app/home/iot_devices/cubit/iot_devices_cubit.dart';
+import 'package:smart_home/app/features/home/iot_devices/cubit/iot_devices_cubit.dart';
 
 class IotDevices extends StatelessWidget {
   const IotDevices({
