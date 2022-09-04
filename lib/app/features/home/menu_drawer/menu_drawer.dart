@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_home/app/features/addcctvwebcam/add_cctv_webcam_page.dart';
 import 'package:smart_home/app/features/addiotdevice/add_iot_device_page.dart';
@@ -13,11 +12,8 @@ import 'package:smart_home/app/features/shop/shop_page.dart';
 
 class MenuDrawer extends StatefulWidget {
   const MenuDrawer({
-    required this.user,
     Key? key,
   }) : super(key: key);
-
-  final User user;
 
   @override
   State<MenuDrawer> createState() => _MenuDrawerState();
@@ -41,11 +37,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (context) => HomePage(user: widget.user)),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                   (Route<dynamic> route) => false);
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => AddIotDevicePage(user: widget.user)));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const AddIotDevicePage()));
             },
             leading: const Icon(Icons.add),
             hoverColor: Colors.grey,
@@ -59,11 +54,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
               /// Rozwiazany problem nadmiernego nakładania się
               Navigator.of(context).pop();
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (context) => HomePage(user: widget.user)),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                   (Route<dynamic> route) => false);
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => AddCctvWebcamPage(user: widget.user)));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const AddCctvWebcamPage()));
             },
             leading: const Icon(Icons.add),
             hoverColor: Colors.grey,
@@ -74,8 +68,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (context) => HomePage(user: widget.user)),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                   (Route<dynamic> route) => false);
             },
             leading: const Icon(Icons.home),
@@ -87,11 +80,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (context) => HomePage(user: widget.user)),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                   (Route<dynamic> route) => false);
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => SettingsPage(user: widget.user)));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const SettingsPage()));
             },
             leading: const Icon(Icons.settings),
             hoverColor: Colors.grey,
@@ -101,11 +93,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (context) => HomePage(user: widget.user)),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                   (Route<dynamic> route) => false);
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => ShopPage(user: widget.user)));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => const ShopPage()));
             },
             leading: const Icon(Icons.shop),
             hoverColor: Colors.grey,

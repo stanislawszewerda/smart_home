@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_home/app/features/home/cctv_webcams/home_page_cctv_content.dart';
@@ -9,10 +8,10 @@ import 'package:smart_home/app/features/home/menu_drawer/menu_drawer.dart';
 class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
-    required this.user,
+    //required this.user,
   }) : super(key: key);
 
-  final User user;
+  //final User user;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -37,13 +36,13 @@ class _HomePageState extends State<HomePage> {
       /// Pomysły do zrobienia:
       /// Trzeba sprobować dodać Drawer jako osoby widget który będzie można wstawić na dowolnej stronie!!!
       /// Rozwijane menu Home? Po rozwinieciu przechodzimy do home a następnie z rozsuniętego home wybieramy to samo co z appbara?
-      drawer: MenuDrawer(user: widget.user),
+      drawer: const MenuDrawer(),
 
       ///
       body: Builder(
         builder: (context) {
           if (currentIndex == 2) {
-            return MyAccount(user: widget.user);
+            return const MyAccount();
           }
           if (currentIndex == 1) {
             return const Cctv();

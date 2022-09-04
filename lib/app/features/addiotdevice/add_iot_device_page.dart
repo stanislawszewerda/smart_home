@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_home/app/features/home/home_page.dart';
@@ -9,10 +8,10 @@ import 'package:numberpicker/numberpicker.dart';
 class AddIotDevicePage extends StatefulWidget {
   const AddIotDevicePage({
     Key? key,
-    required this.user,
+    //required this.user,
   }) : super(key: key);
 
-  final User user;
+  //final User user;
 
   @override
   State<AddIotDevicePage> createState() => _AddIotDevicePageState();
@@ -34,7 +33,7 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
           ],
         ),
       ),
-      drawer: MenuDrawer(user: widget.user),
+      drawer: const MenuDrawer(),
       body: Center(
         child: ListView(
           children: [
@@ -103,10 +102,10 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
                                 'name': iotDeviceName,
                               });
                               Navigator.of(context).pop();
+
                               Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          HomePage(user: widget.user)),
+                                      builder: (context) => const HomePage()),
                                   (Route<dynamic> route) => false);
                             },
                       child: const Text('Add Device')),

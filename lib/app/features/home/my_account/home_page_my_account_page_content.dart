@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_home/app/cubit/root_cubit.dart';
@@ -8,10 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MyAccount extends StatelessWidget {
   const MyAccount({
     Key? key,
-    required this.user,
+    //required this.user,
   }) : super(key: key);
 
-  final User user;
+  //final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +23,11 @@ class MyAccount extends StatelessWidget {
             style: GoogleFonts.lobster(fontSize: 20),
           ),
           const SizedBox(height: 50),
-          Text(
+          /*Text(
             '${user.email}',
             style: GoogleFonts.lobster(fontSize: 20),
           ),
+          */
           const SizedBox(
             height: 100,
           ),
