@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_home/app/cubit/root_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 //Login: stachuf16@gmail.com
 //Hasło: stachu14d
@@ -181,11 +182,12 @@ class _LoginPageState extends State<LoginPage> {
                         if (isCreatingAccount == true) {
                           // REJESTRACJA
                           try {
-                            await FirebaseAuth.instance
+                            await context
+                                .read<RootCubit>()
                                 .createUserWithEmailAndPassword(
-                              email: widget.emailcontroler.text,
-                              password: widget.passwordcontroler.text,
-                            );
+                                  email: widget.emailcontroler.text,
+                                  password: widget.passwordcontroler.text,
+                                );
                           } catch (error) {
                             setState(() {
                               errorMessage = error.toString();
@@ -195,11 +197,11 @@ class _LoginPageState extends State<LoginPage> {
                         } else {
                           // LOGOWANIE
                           try {
-                            await FirebaseAuth.instance
+                            await context
+                                .read<RootCubit>()
                                 .signInWithEmailAndPassword(
-                              email: widget.emailcontroler.text,
-                              password: widget.passwordcontroler.text,
-                            );
+                                    email: widget.emailcontroler.text,
+                                    password: widget.passwordcontroler.text);
                           } catch (error) {
                             setState(() {
                               errorMessage = error.toString();

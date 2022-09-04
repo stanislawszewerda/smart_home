@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
@@ -20,6 +19,22 @@ class RootCubit extends Cubit<RootState> {
 
   Future<void> signOut() async {
     FirebaseAuth.instance.signOut();
+  }
+
+  Future<void> createUserWithEmailAndPassword(
+      {required String email, required String password}) async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+
+  Future<void> signInWithEmailAndPassword(
+      {required String email, required String password}) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
   }
 
   Future<void> start() async {
