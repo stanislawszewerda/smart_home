@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_home/app/cubit/root_cubit.dart';
 import 'package:smart_home/app/features/welcome/welcome_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyAccount extends StatelessWidget {
   const MyAccount({
@@ -33,7 +35,7 @@ class MyAccount extends StatelessWidget {
             style: ElevatedButton.styleFrom(
                 primary: const Color.fromARGB(70, 35, 241, 104)),
             onPressed: () {
-              FirebaseAuth.instance.signOut();
+              context.read<RootCubit>().signOut();
             },
             child: Text(
               'Wyloguj się',
