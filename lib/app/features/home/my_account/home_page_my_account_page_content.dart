@@ -36,6 +36,11 @@ class MyAccount extends StatelessWidget {
                 primary: const Color.fromARGB(70, 35, 241, 104)),
             onPressed: () {
               context.read<RootCubit>().signOut();
+              /*
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  (Route<dynamic> route) => false);
+                  */
             },
             child: Text(
               'Wyloguj się',
