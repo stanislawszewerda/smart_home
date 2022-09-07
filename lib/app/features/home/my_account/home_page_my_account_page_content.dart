@@ -4,14 +4,18 @@ import 'package:smart_home/app/cubit/root_cubit.dart';
 import 'package:smart_home/app/features/welcome/welcome_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MyAccount extends StatelessWidget {
+class MyAccount extends StatefulWidget {
   const MyAccount({
     Key? key,
-    //required this.user,
   }) : super(key: key);
 
-  //final User user;
+  @override
+  State<MyAccount> createState() => _MyAccountState();
+}
 
+String? user;
+
+class _MyAccountState extends State<MyAccount> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -23,11 +27,13 @@ class MyAccount extends StatelessWidget {
             style: GoogleFonts.lobster(fontSize: 20),
           ),
           const SizedBox(height: 50),
-          /*Text(
-            '${user.email}',
-            style: GoogleFonts.lobster(fontSize: 20),
-          ),
-          */
+          BlocProvider(
+              create: (context) => RootCubit()..start(),
+              child: Center(child:
+                  BlocBuilder<RootCubit, RootState>(builder: (context, state) {
+                final user = state.user?.email;
+                return Center(child: Text(user.toString()));
+              }))),
           const SizedBox(
             height: 100,
           ),
@@ -36,11 +42,6 @@ class MyAccount extends StatelessWidget {
                 primary: const Color.fromARGB(70, 35, 241, 104)),
             onPressed: () {
               context.read<RootCubit>().signOut();
-              /*
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                  (Route<dynamic> route) => false);
-                  */
             },
             child: Text(
               'Wyloguj się',
