@@ -37,7 +37,7 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
                 (Route<dynamic> route) => false);
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text('Your IoT device has been added corectly'),
-              backgroundColor: Color.fromARGB(131, 25, 156, 32),
+              backgroundColor: Color.fromARGB(255, 28, 255, 39),
             ));
           }
           if (state.errorMessage.isNotEmpty) {
