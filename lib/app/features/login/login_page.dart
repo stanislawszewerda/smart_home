@@ -1,10 +1,7 @@
-//import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import 'package:firebase_core/firebase_core.dart';
-//import 'package:smart_home/app/welcome/welcome_page.dart';
-//import 'firebase_options.dart';
+import 'package:smart_home/app/cubit/root_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 //Login: stachuf16@gmail.com
 //Hasło: stachu14d
@@ -70,8 +67,8 @@ class _LoginPageState extends State<LoginPage> {
         decoration: const BoxDecoration(
           image: DecorationImage(
               // AssetImage - jest funkcjonalnością którą jakoś trzeba implementować w Pubspcec.Yaml!!!
-              // Fit: BoxFit.Cover umożliwia dodanie zdjęcia
-              image: AssetImage('images/window.jpg'),
+              // Fit: BoxFit.Cover umożliwia dociagniecie zdjecia do krawedzi ekranu
+              image: AssetImage('images/zorza.jpg'),
               fit: BoxFit.cover),
         ),
         child: Center(
@@ -81,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'Smart Home',
               style: GoogleFonts.lobster(
-                fontSize: 50,
+                fontSize: 40,
                 fontWeight: FontWeight.bold,
                 textStyle:
                     const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
@@ -90,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'Just for You',
               style: GoogleFonts.lobster(
-                fontSize: 30,
+                fontSize: 20,
                 textStyle:
                     const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
               ),
@@ -113,6 +110,15 @@ class _LoginPageState extends State<LoginPage> {
                     ///
                     ///
                     ///
+
+                    Text(
+                      isCreatingAccount == true ? 'Rejestracja' : 'Logowanie',
+                      style: GoogleFonts.lobster(fontSize: 20),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+
                     ///
                     ///
                     TextFormField(
@@ -128,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       controller: widget.emailcontroler,
                       style: GoogleFonts.lobster(
-                          fontSize: 20,
+                          fontSize: 15,
                           textStyle: const TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255))),
                     ),
@@ -142,6 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                     ///
                     ///
                     TextFormField(
+                      obscureText: true,
                       focusNode: myFocusNode,
                       decoration: InputDecoration(
                         fillColor: const Color.fromARGB(255, 255, 255, 255),
@@ -155,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       controller: widget.passwordcontroler,
                       style: GoogleFonts.lobster(
-                          fontSize: 20,
+                          fontSize: 15,
                           textStyle: const TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255))),
                     ),
@@ -169,38 +176,37 @@ class _LoginPageState extends State<LoginPage> {
                     ///
                     ///
                     ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Colors.blue),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(70, 35, 241, 104)),
                       onPressed: () async {
                         if (isCreatingAccount == true) {
                           // REJESTRACJA
                           try {
-                            await FirebaseAuth.instance
+                            await context
+                                .read<RootCubit>()
                                 .createUserWithEmailAndPassword(
-                              email: widget.emailcontroler.text,
-                              password: widget.passwordcontroler.text,
-                            );
+                                  email: widget.emailcontroler.text,
+                                  password: widget.passwordcontroler.text,
+                                );
                           } catch (error) {
                             setState(() {
                               errorMessage = error.toString();
                             });
-                            print(error);
                           }
-                          ;
                         } else {
                           // LOGOWANIE
                           try {
-                            await FirebaseAuth.instance
+                            await context
+                                .read<RootCubit>()
                                 .signInWithEmailAndPassword(
-                              email: widget.emailcontroler.text,
-                              password: widget.passwordcontroler.text,
-                            );
+                                    email: widget.emailcontroler.text,
+                                    password: widget.passwordcontroler.text);
                           } catch (error) {
                             setState(() {
                               errorMessage = error.toString();
                             });
-                            print(error);
                           }
-                          ;
                         }
                       },
                       child: Text(
@@ -208,7 +214,7 @@ class _LoginPageState extends State<LoginPage> {
                             ? 'Zarejestruj się'
                             : 'Zaloguj się',
                         style: GoogleFonts.lobster(
-                          fontSize: 20,
+                          fontSize: 15,
                           textStyle: const TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255)),
                         ),
@@ -264,7 +270,7 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       errorMessage,
                       style: GoogleFonts.lobster(
-                        fontSize: 18,
+                        fontSize: 10,
                         textStyle: const TextStyle(
                             color: Color.fromARGB(255, 255, 255, 255)),
                       ),
@@ -272,9 +278,6 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 1,
             ),
 
             ///
