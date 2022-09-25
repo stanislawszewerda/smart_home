@@ -28,15 +28,33 @@ class IotDevices extends StatelessWidget {
                   Container(
                     decoration: const BoxDecoration(
                         color: Color.fromARGB(61, 85, 255, 7)),
-                    padding: const EdgeInsets.all(20.0),
-                    margin: const EdgeInsets.all(20.20),
+                    padding: const EdgeInsets.all(10.0),
+                    margin: const EdgeInsets.all(10.0),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(document['name']),
-                          Text(document['portnumber'].toString()),
-                          const Text('value'),
-                          const Text('button'),
+                          Container(
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(153, 0, 0, 0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                document['name'],
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(153, 0, 0, 0),
+                            ),
+                            child: Text(
+                              document['portnumber'].toString(),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ]),
                   ),
                 ],
