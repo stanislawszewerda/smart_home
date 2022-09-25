@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_home/app/cubit/root_cubit.dart';
-import 'package:smart_home/app/features/welcome/welcome_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyAccount extends StatefulWidget {
@@ -54,22 +53,6 @@ class _MyAccountState extends State<MyAccount> {
           ),
           const SizedBox(
             height: 10,
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                primary: const Color.fromARGB(70, 35, 241, 104)),
-            onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => const WelcomePage()));
-            },
-            child: Text(
-              'Zobacz ekran powitalny',
-              style: GoogleFonts.lobster(
-                fontSize: 20,
-                textStyle:
-                    const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
-              ),
-            ),
           ),
         ],
       ),
