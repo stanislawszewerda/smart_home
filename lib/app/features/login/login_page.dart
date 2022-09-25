@@ -177,7 +177,8 @@ class _LoginPageState extends State<LoginPage> {
                     ///
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: const Color.fromARGB(70, 35, 241, 104)),
+                          backgroundColor:
+                              const Color.fromARGB(70, 35, 241, 104)),
                       onPressed: () async {
                         if (isCreatingAccount == true) {
                           // REJESTRACJA
@@ -192,7 +193,6 @@ class _LoginPageState extends State<LoginPage> {
                             setState(() {
                               errorMessage = error.toString();
                             });
-                            print(error);
                           }
                         } else {
                           // LOGOWANIE
@@ -206,7 +206,6 @@ class _LoginPageState extends State<LoginPage> {
                             setState(() {
                               errorMessage = error.toString();
                             });
-                            print(error);
                           }
                         }
                       },
