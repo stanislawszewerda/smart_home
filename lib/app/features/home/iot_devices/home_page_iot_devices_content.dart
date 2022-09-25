@@ -24,21 +24,6 @@ class IotDevices extends StatelessWidget {
 
             return ListView(
               children: [
-                Container(
-                  decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 152, 163, 0)),
-                  padding: const EdgeInsets.all(20.0),
-                  margin: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text('Device name'),
-                      Text('Port number'),
-                      Text('State'),
-                      Text('Button'),
-                    ],
-                  ),
-                ),
                 for (final document in documents) ...[
                   Container(
                     decoration: const BoxDecoration(

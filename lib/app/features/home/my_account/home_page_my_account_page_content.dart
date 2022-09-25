@@ -38,7 +38,7 @@ class _MyAccountState extends State<MyAccount> {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                primary: const Color.fromARGB(70, 35, 241, 104)),
+                backgroundColor: const Color.fromARGB(70, 35, 241, 104)),
             onPressed: () {
               context.read<RootCubit>().signOut();
             },
