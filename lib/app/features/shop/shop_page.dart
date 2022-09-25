@@ -31,9 +31,9 @@ class _ShopPageState extends State<ShopPage> {
         drawer: const MenuDrawer(),
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('Here is a place to buy Our prodcts in the future',
-                style: GoogleFonts.lobster(
-                    textStyle: const TextStyle(color: Colors.amber)))
+            Text('Shop Page', style: GoogleFonts.lobster()),
+            Text('This functionality will be avaliable in the future',
+                style: GoogleFonts.lobster())
           ]),
         ));
   }

@@ -34,9 +34,9 @@ class _AddCctvWebcamPageState extends State<AddCctvWebcamPage> {
         drawer: const MenuDrawer(),
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('Screan for adding CCTV webcam',
-                style: GoogleFonts.lobster(
-                    textStyle: const TextStyle(color: Colors.amber)))
+            Text('Add CCTV webcam', style: GoogleFonts.lobster()),
+            Text('This functionality will be avaliable in the future',
+                style: GoogleFonts.lobster())
           ]),
         ));
   }

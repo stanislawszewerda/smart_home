@@ -5,10 +5,7 @@ import 'package:smart_home/app/features/home/menu_drawer/menu_drawer.dart';
 class SettingsPage extends StatefulWidget {
   const SettingsPage({
     Key? key,
-    //required this.user,
   }) : super(key: key);
-
-  //final User user;
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
@@ -34,9 +31,9 @@ class _SettingsPageState extends State<SettingsPage> {
         drawer: const MenuDrawer(),
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('SETTINGS FOR YOUR APP',
-                style: GoogleFonts.lobster(
-                    textStyle: const TextStyle(color: Colors.amber)))
+            Text('Settings Page', style: GoogleFonts.lobster()),
+            Text('This functionality will be avaliable in the future',
+                style: GoogleFonts.lobster())
           ]),
         ));
   }
