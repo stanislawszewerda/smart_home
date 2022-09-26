@@ -91,7 +91,7 @@ class _IotDevicesState extends State<IotDevices> {
   Widget buildSwitch() => Switch.adaptive(
       activeColor: Colors.greenAccent,
       inactiveThumbColor: Colors.redAccent,
-      inactiveTrackColor: Color.fromARGB(132, 196, 56, 56),
+      inactiveTrackColor: const Color.fromARGB(132, 196, 56, 56),
       value: value,
       onChanged: (value) => setState(() => this.value = value));
 }

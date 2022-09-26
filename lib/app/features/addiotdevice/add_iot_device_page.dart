@@ -156,19 +156,6 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
                                             portNumber,
                                             iotDeviceName,
                                           );
-                                      // FirebaseFirestore.instance
-                                      //     .collection('devices')
-                                      //     .add({
-                                      //   'portnumber': portNumber,
-                                      //   'name': iotDeviceName,
-                                      // });
-                                      // Navigator.of(context).pop();
-
-                                      // Navigator.of(context).pushAndRemoveUntil(
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) =>
-                                      //             const HomePage()),
-                                      //     (Route<dynamic> route) => false);
                                     },
                               child: const Text('Add Device')),
                         ],
