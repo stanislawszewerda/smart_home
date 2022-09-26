@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_home/app/features/home/iot_devices/cubit/iot_devices_cubit.dart';
-import 'package:smart_home/models/item_model.dart';
 
 class IotDevices extends StatefulWidget {
   const IotDevices({
@@ -28,13 +27,11 @@ class _IotDevicesState extends State<IotDevices> {
               return const Center(child: CircularProgressIndicator());
             }
 
-            //we have to do something here :/
-
-            final itemModels = state.documents;
+            final documents = state.documents;
 
             return ListView(
               children: [
-                for (final itemModel in itemModels) ...[
+                for (final document in documents) ...[
                   Container(
                     decoration: const BoxDecoration(
                         color: Color.fromARGB(61, 85, 255, 7)),
@@ -50,7 +47,7 @@ class _IotDevicesState extends State<IotDevices> {
                             ),
                             child: Center(
                               child: Text(
-                                itemModel.iotDeviceName,
+                                document['name'],
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -78,7 +75,7 @@ class _IotDevicesState extends State<IotDevices> {
                               color: Color.fromARGB(153, 0, 0, 0),
                             ),
                             child: Text(
-                              itemModel.portNumber.toString(),
+                              document['portnumber'].toString(),
                               textAlign: TextAlign.center,
                             ),
                           ),
