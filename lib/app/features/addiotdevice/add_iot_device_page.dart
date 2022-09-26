@@ -70,6 +70,26 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
               body: Center(
                 child: ListView(
                   children: [
+                    Container(
+                      color: const Color.fromARGB(69, 35, 241, 104),
+                      padding: const EdgeInsets.all(20.0),
+                      margin: const EdgeInsets.all(20.0),
+                      child: Center(
+                        child: Column(
+                          children: [
+                            const Text('Chose the type of your IoT Device'),
+                            Text(
+                              'Switch',
+                              style: GoogleFonts.lobster(fontSize: 20),
+                            ),
+                            const Text(
+                                'Other types of IoT devices are not available at this moment')
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    ///
                     ///
                     ///
                     ///
@@ -90,12 +110,15 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
                                 setState(() => portNumber = value),
                           ),
                           const Text('Set number of the port on Master Device'),
-                          const SizedBox(
-                            height: 20,
-                          ),
                         ],
                       ),
                     ),
+
+                    ///
+                    ///
+                    ///
+                    ///
+                    ///
 
                     ///
                     ///
@@ -127,9 +150,6 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
 
                     ///
                     ///
@@ -156,19 +176,6 @@ class _AddIotDevicePageState extends State<AddIotDevicePage> {
                                             portNumber,
                                             iotDeviceName,
                                           );
-                                      // FirebaseFirestore.instance
-                                      //     .collection('devices')
-                                      //     .add({
-                                      //   'portnumber': portNumber,
-                                      //   'name': iotDeviceName,
-                                      // });
-                                      // Navigator.of(context).pop();
-
-                                      // Navigator.of(context).pushAndRemoveUntil(
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) =>
-                                      //             const HomePage()),
-                                      //     (Route<dynamic> route) => false);
                                     },
                               child: const Text('Add Device')),
                         ],

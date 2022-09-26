@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_home/app/features/home/iot_devices/cubit/iot_devices_cubit.dart';
 
-class IotDevices extends StatelessWidget {
+class IotDevices extends StatefulWidget {
   const IotDevices({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<IotDevices> createState() => _IotDevicesState();
+}
+
+class _IotDevicesState extends State<IotDevices> {
+  bool value = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,34 +31,54 @@ class IotDevices extends StatelessWidget {
 
             return ListView(
               children: [
-                Container(
-                  decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 152, 163, 0)),
-                  padding: const EdgeInsets.all(20.0),
-                  margin: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text('Device name'),
-                      Text('Port number'),
-                      Text('State'),
-                      Text('Button'),
-                    ],
-                  ),
-                ),
                 for (final document in documents) ...[
                   Container(
                     decoration: const BoxDecoration(
                         color: Color.fromARGB(61, 85, 255, 7)),
-                    padding: const EdgeInsets.all(20.0),
-                    margin: const EdgeInsets.all(20.20),
+                    padding: const EdgeInsets.all(10.0),
+                    margin: const EdgeInsets.all(10.0),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(document['name']),
-                          Text(document['portnumber'].toString()),
-                          const Text('value'),
-                          const Text('button'),
+                          Container(
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(153, 0, 0, 0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                document['name'],
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(153, 0, 0, 0),
+                            ),
+                            child: buildSwitch(),
+                          ),
+                          Container(
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(153, 0, 0, 0),
+                            ),
+                            child: const Text(
+                              'Żarówka',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(153, 0, 0, 0),
+                            ),
+                            child: Text(
+                              document['portnumber'].toString(),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ]),
                   ),
                 ],
@@ -60,4 +87,11 @@ class IotDevices extends StatelessWidget {
           },
         )));
   }
+
+  Widget buildSwitch() => Switch.adaptive(
+      activeColor: Colors.greenAccent,
+      inactiveThumbColor: Colors.redAccent,
+      inactiveTrackColor: const Color.fromARGB(132, 196, 56, 56),
+      value: value,
+      onChanged: (value) => setState(() => this.value = value));
 }
