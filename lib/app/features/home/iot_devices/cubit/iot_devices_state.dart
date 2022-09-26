@@ -8,7 +8,8 @@ class IotDevicesState {
     this.errorMessage = '',
   });
 
-  final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents;
+  //final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents;
+  final List<ItemModel> documents;
   final bool isLoading;
   final String errorMessage;
 }
