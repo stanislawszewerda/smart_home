@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_home/app/features/home/iot_devices/cubit/iot_devices_cubit.dart';
 
-class IotDevices extends StatelessWidget {
+class IotDevices extends StatefulWidget {
   const IotDevices({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<IotDevices> createState() => _IotDevicesState();
+}
+
+class _IotDevicesState extends State<IotDevices> {
+  bool value = true;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +57,23 @@ class IotDevices extends StatelessWidget {
                             decoration: const BoxDecoration(
                               color: Color.fromARGB(153, 0, 0, 0),
                             ),
+                            child: buildSwitch(),
+                          ),
+                          Container(
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(153, 0, 0, 0),
+                            ),
+                            child: const Text(
+                              'Żarówka',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(153, 0, 0, 0),
+                            ),
                             child: Text(
                               document['portnumber'].toString(),
                               textAlign: TextAlign.center,
@@ -63,4 +87,11 @@ class IotDevices extends StatelessWidget {
           },
         )));
   }
+
+  Widget buildSwitch() => Switch.adaptive(
+      activeColor: Colors.greenAccent,
+      inactiveThumbColor: Colors.redAccent,
+      inactiveTrackColor: Color.fromARGB(132, 196, 56, 56),
+      value: value,
+      onChanged: (value) => setState(() => this.value = value));
 }
