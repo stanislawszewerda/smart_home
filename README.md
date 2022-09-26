@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+This project was a field to learn some freamework skills. It is the IoT app. It is using firebase and bloc/cubit.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
